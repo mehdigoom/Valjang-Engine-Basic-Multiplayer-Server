@@ -23,11 +23,19 @@ Server.prototype.start = function() {
             socket.leave(room_name);
         })
 
-        socket.on('my_name_is', function(username) {
+        socket.on('my_name_is', function(username, room_name) {
 
-            console.log(room_name + "le client " + socket.id + "à le nom " + username)
+            console.log("le client " + socket.id + "à le nom " + username)
 
             socket.to(room_name).emit('print_server_message', "Salut ! " + username + "!")
+
+
+        })
+        socket.on('my_posision', function(posisionx, posisiony, room_name) {
+
+            console.log("le client :" + socket.id + " est en posision pos X :" + posisionx + " Pos Y" + posisiony)
+            let id = socket.id
+            socket.to(room_name).emit('print_server_message', posisionx, posisiony)
 
 
         })
