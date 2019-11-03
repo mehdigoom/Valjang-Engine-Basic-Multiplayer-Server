@@ -1,0 +1,24 @@
+{
+  "name": "serveur",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000V\u0000a\u0000l\u0000j\u0000a\u0000n\u0000g\u0000-\u0000E\u0000n\u0000g\u0000i\u0000n\u0000e\u0000-\u0000B\u0000a\u0000s\u0000i\u0000c\u0000-\u0000M\u0000u\u0000l\u0000t\u0000i\u0000p\u0000l\u0000a\u0000y\u0000e\u0000r\u0000-\u0000S\u0000e\u0000r\u0000v\u0000e\u0000r\u0000\r\u0000 \u0000",
+  "main": "server.js",
+  "dependencies": {
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehdigoom/Valjang-Engine-Basic-Multiplayer-Server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mehdigoom/Valjang-Engine-Basic-Multiplayer-Server/issues"
+  },
+  "homepage": "https://github.com/mehdigoom/Valjang-Engine-Basic-Multiplayer-Server#readme"
+}
