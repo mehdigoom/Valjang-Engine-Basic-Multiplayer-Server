@@ -20,20 +20,13 @@ Server.prototype.start = function() {
             socket.leave(room_name);
         })
 
-        socket.on('my_name_is', function(username) {
 
-            console.log("le client " + socket.id + "à le nom " + username)
-
-            socket.to(room_name).emit('print_server_message', "Salut ! " + username + "!")
-
-
-        })
         socket.on('my_posision', function(posisionx, posisiony) {
 
             //console.log("le client :" + socket.id + " est en posision pos X :" + posisionx + " Pos Y" + posisiony)
             let id = socket.id
-            socket.to(room_name).emit('print_server_message', posisionx, posisiony)
-                //console.log(room_name)
+            socket.emit('player_pos', posisionx, posisiony);
+            //console.log(room_name)
 
         })
 
