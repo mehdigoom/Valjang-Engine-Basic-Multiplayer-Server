@@ -21,11 +21,11 @@ Server.prototype.start = function() {
         })
 
 
-        socket.on('my_posision', function(posisionx, posisiony) {
+        socket.on('my_posision', function(posisionx, posisiony, id) {
 
-            //console.log("le client :" + socket.id + " est en posision pos X :" + posisionx + " Pos Y" + posisiony)
-            let id = socket.id
-            socket.emit('player_pos', posisionx, posisiony);
+            console.log("le client :" + id + " est en posision pos X :" + posisionx + " Pos Y" + posisiony)
+
+            socket.emit('player_pos', posisionx, posisiony, id);
             //console.log(room_name)
 
         })
