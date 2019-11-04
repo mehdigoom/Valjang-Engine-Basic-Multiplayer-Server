@@ -25,7 +25,7 @@ Server.prototype.start = function() {
 
             console.log("le client :" + id + " est en posision pos X :" + posisionx + " Pos Y" + posisiony)
 
-            socket.emit('player_pos', posisionx, posisiony, id);
+            socket.broadcast.emit('player_pos', posisionx, posisiony, id);
             //console.log(room_name)
 
         })
