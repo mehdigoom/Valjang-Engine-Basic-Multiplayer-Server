@@ -5,20 +5,14 @@ function Server(opt) {
     this.start();
 }
 Server.prototype.start = function() {
-    let room_name = "Room1"
     console.log("Lancement du serveur mulijoueurs Valjang Engine.")
     that = this;
     this.io.on('connection', function(socket) {
         console.log("Le client " + socket.id + " est connecter")
         socket.broadcast.emit('print_server_message', "le client" + socket.id + "est connecter!");
-        socket.to(room_name).emit('print_server_message', "|" + room_name + "|" + "L'utilisateur " + socket.id + "à rejoin la game!")
-        socket.join(room_name)
+ 
 
-        socket.on('leave_room', function(username) {
-            console.log("Lutilisateur :" + username + "à quité le salon" + room_name)
-            socket.to(room_name).emit('print_server_message', "|" + room_name + "| l'utilsateur " + "est partie")
-            socket.leave(room_name);
-        })
+       
 
 
         socket.on('my_posision', function(posisionx, posisiony, id) {
