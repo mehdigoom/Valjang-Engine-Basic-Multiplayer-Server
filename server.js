@@ -19,7 +19,6 @@ Server.prototype.start = function() {
    
         console.log("Le client " + socket.id +" est connecter")
         //socket.broadcast.emit('print_server_message', "le client" + socket.id + "est connecter!");
- 
         
         
         socket.on('needchunk', function(posisionx, posisiony,id) {
@@ -64,6 +63,7 @@ Server.prototype.start = function() {
 
         socket.on('disconnect', function() {
             console.log("Le client " + socket.id + " est déconnecter")
+            socket.broadcast.emit('Disconnect',socket.id);
         });
 
     });
