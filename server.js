@@ -27,13 +27,13 @@ Server.prototype.start = function() {
 
         socket.on('spawnI', function(posisionx, posisiony) {
 
-            console.log("le client :  a spwn  pos X :" + posisionx + " Pos Y" + posisiony)
+            //console.log("le client :  a spwn  pos X :" + posisionx + " Pos Y" + posisiony)
 
             socket.broadcast.emit('spawner', posisionx, posisiony);
             //console.log(room_name)
 
         })
-        
+
         socket.on('disconnect', function() {
             console.log("Le client " + socket.id + " est déconnecter")
         });
