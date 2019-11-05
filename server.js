@@ -23,23 +23,24 @@ Server.prototype.start = function() {
         
         
         socket.on('needchunk', function(posisionx, posisiony,id) {
-            console.log("Je genere un Chunk !")
+           // console.log("Je genere un Chunk !")
             let idp=1
             let posx
             let posy
 
             for (var i = 0; i < 20; i++) {
                 
-                posx = rng(posisionx,posisionx+600)
-                posy = rng(posisiony,+posisiony+600)
+                posx = rng(posisionx- 50,posisionx+50)
+                posy = rng(posisiony -50,+posisiony+50)
                 socket.emit('Gen', posx, posy,idp);
                 socket.broadcast.emit('Gen', posx, posy,idp);
               }
 
             
            
-            console.log("Et voila !")
+           // console.log("Et voila !")
         })
+
        
 
 
