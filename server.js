@@ -24,11 +24,11 @@ Server.prototype.start = function() {
 
         socket.on('needchunk', function(posisionx, posisiony, id) {
             // console.log("Je genere un Chunk !")
-            let idp = rng(1, 4)
+            let idp = rng(1, 10)
             let posx
             let posy
 
-            for (var i = 0; i < 20; i++) {
+            for (var i = 0; i < 30; i++) {
 
                 posx = rng(posisionx - 50, posisionx + 50)
                 posy = rng(posisiony - 50, +posisiony + 50)
