@@ -31,8 +31,8 @@ Server.prototype.start = function() {
 
             for (var i = 0; i < 30; i++) {
 
-                posx = rngfloat(posisionx - 50, posisionx + 50)
-                posy = rngfloat(posisiony - 50, +posisiony + 50)
+                posx = Rngfloat(posisionx - 50, posisionx + 50)
+                posy = Rngfloat(posisiony - 50, +posisiony + 50)
                 socket.emit('Gen', posx, posy, idp);
                 socket.broadcast.emit('Gen', posx, posy, idp);
             }
