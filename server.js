@@ -9,8 +9,9 @@ function Rngfloat(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-function rng(min, max) {
-    return Math.random() * (max - min) + min;
+function rng(max) {
+
+    return Math.floor(Math.random() * Math.floor(max));
 }
 Server.prototype.start = function() {
 
@@ -24,14 +25,14 @@ Server.prototype.start = function() {
 
         socket.on('needchunk', function(posisionx, posisiony, id) {
             // console.log("Je genere un Chunk !")
-            let idp = rng(1, 10)
+            let idp = rng(10)
             let posx
             let posy
 
             for (var i = 0; i < 30; i++) {
 
-                posx = rng(posisionx - 50, posisionx + 50)
-                posy = rng(posisiony - 50, +posisiony + 50)
+                posx = rngfloat(posisionx - 50, posisionx + 50)
+                posy = rngfloat(posisiony - 50, +posisiony + 50)
                 socket.emit('Gen', posx, posy, idp);
                 socket.broadcast.emit('Gen', posx, posy, idp);
             }
