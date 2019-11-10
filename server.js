@@ -29,7 +29,7 @@ Server.prototype.start = function() {
             let posx
             let posy
 
-            for (var i = 0; i < 30; i++) {
+            for (var i = 0; i < 20; i++) {
                 idp = rng(10)
                 posx = Rngfloat(posisionx - 50, posisionx + 50)
                 posy = Rngfloat(posisiony - 50, +posisiony + 50)
