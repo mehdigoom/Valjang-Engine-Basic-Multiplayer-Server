@@ -25,12 +25,12 @@ Server.prototype.start = function() {
 
         socket.on('needchunk', function(posisionx, posisiony, id) {
             // console.log("Je genere un Chunk !")
-            let idp = rng(10)
+            let idp
             let posx
             let posy
 
             for (var i = 0; i < 30; i++) {
-
+                idp = rng(10)
                 posx = Rngfloat(posisionx - 50, posisionx + 50)
                 posy = Rngfloat(posisiony - 50, +posisiony + 50)
                 socket.emit('Gen', posx, posy, idp);
