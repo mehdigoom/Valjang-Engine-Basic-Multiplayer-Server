@@ -18,17 +18,18 @@ Server.prototype.start = function() {
 
     console.log("Lancement du serveur mulijoueurs Valjang Engine.")
     that = this;
+    //Player connecting
     this.io.on('connection', function(socket) {
 player ++
         console.log("Le client " + socket.id + " est connecter (" + player+"/100)")
-            //socket.broadcast.emit('print_server_message', "le client" + socket.id + "est connecter!");
+           
 
-
+            //map generator
         socket.on('needchunk', function(posisionx, posisiony, id) {
-            // console.log("Je genere un Chunk !")
-            let idp
-            let posx
-            let posy
+          
+            let idp //Item id
+            let posx //Item posison X
+            let posy //Item posison Y
 
             for (var i = 0; i < 20; i++) {
                 idp = rng(10)
@@ -40,30 +41,31 @@ player ++
 
 
 
-            // console.log("Et voila !")
+            
         })
 
 
 
-
+            //posision player Syc
         socket.on('my_posision', function(posisionx, posisiony, id) {
 
-            //console.log("le client :" + id + " est en posision pos X :" + posisionx + " Pos Y" + posisiony)
+           
 
             socket.broadcast.emit('player_pos', posisionx, posisiony, id);
-            //console.log(room_name)
+           
 
         })
 
-        socket.on('spawnI', function(posisionx, posisiony) {
+        //Drop item
+        socket.on('spawnI', function(posisionx, posisiony,id) {
 
-            //console.log("le client :  a spwn  pos X :" + posisionx + " Pos Y" + posisiony)
+           
 
             socket.broadcast.emit('spawner', posisionx, posisiony, id);
-            //console.log(room_name)
+            
 
         })
-
+            //Player disconnected
         socket.on('disconnect', function() {
             this.player--
             console.log("Le client " + socket.id + " est déconnecter"+"("+ player+"/100)")
@@ -71,6 +73,7 @@ player ++
         });
 
     });
+    //Runnig server
     this.httpServer.listen(this.opt.port, function() {
         console.log("le server écoute le port: " + that.opt.port +"("+ player+"/100)")
 
