@@ -1,4 +1,5 @@
 player = 0
+PlayerMax = 100
 function Server(opt) {
     this.opt = opt;
     this.httpServer = require('http').createServer();
@@ -20,7 +21,7 @@ Server.prototype.start = function() {
     that = this;
     //Player connecting
     this.io.on('connection', function(socket) {
-player ++
+        player ++
         console.log("Le client " + socket.id + " est connecter (" + player+"/100)")
            
 
@@ -67,7 +68,7 @@ player ++
         })
             //Player disconnected
         socket.on('disconnect', function() {
-            this.player--
+            player = player -1
             console.log("Le client " + socket.id + " est déconnecter"+"("+ player+"/100)")
             socket.broadcast.emit('Disconnect', socket.id);
         });
