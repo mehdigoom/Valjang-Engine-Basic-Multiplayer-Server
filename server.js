@@ -1,3 +1,4 @@
+player = 0
 function Server(opt) {
     this.opt = opt;
     this.httpServer = require('http').createServer();
@@ -18,8 +19,8 @@ Server.prototype.start = function() {
     console.log("Lancement du serveur mulijoueurs Valjang Engine.")
     that = this;
     this.io.on('connection', function(socket) {
-
-        console.log("Le client " + socket.id + " est connecter")
+player ++
+        console.log("Le client " + socket.id + " est connecter (" + player+"/100)")
             //socket.broadcast.emit('print_server_message', "le client" + socket.id + "est connecter!");
 
 
@@ -64,13 +65,14 @@ Server.prototype.start = function() {
         })
 
         socket.on('disconnect', function() {
-            console.log("Le client " + socket.id + " est déconnecter")
+            this.player--
+            console.log("Le client " + socket.id + " est déconnecter"+"("+ player+"/100)")
             socket.broadcast.emit('Disconnect', socket.id);
         });
 
     });
     this.httpServer.listen(this.opt.port, function() {
-        console.log("le server écoute le port: " + that.opt.port)
+        console.log("le server écoute le port: " + that.opt.port +"("+ player+"/100)")
 
     });
 };
