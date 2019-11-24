@@ -22,7 +22,7 @@ Server.prototype.start = function() {
     //Player connecting
     this.io.on('connection', function(socket) {
         player ++
-        console.log("Le client " + socket.id + " est connecter (" + player+"/100)")
+        console.log("Le client " + socket.id + " est connecter (" + player+PlayerMax+")"+)
            if(Player >= PlayerMax){
             socket.emit('Full',player);
            }
