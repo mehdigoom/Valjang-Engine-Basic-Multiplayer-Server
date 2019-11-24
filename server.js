@@ -23,7 +23,9 @@ Server.prototype.start = function() {
     this.io.on('connection', function(socket) {
         player ++
         console.log("Le client " + socket.id + " est connecter (" + player+"/100)")
-           
+           if(Player >= PlayerMax){
+            socket.emit('Full',player);
+           }
 
             //map generator
         socket.on('needchunk', function(posisionx, posisiony, id) {
@@ -69,14 +71,14 @@ Server.prototype.start = function() {
             //Player disconnected
         socket.on('disconnect', function() {
             player = player -1
-            console.log("Le client " + socket.id + " est déconnecter"+"("+ player+"/100)")
+            console.log("Le client " + socket.id + " est déconnecter"+"("+ player+"/"+PlayerMax+")")
             socket.broadcast.emit('Disconnect', socket.id);
         });
 
     });
     //Runnig server
     this.httpServer.listen(this.opt.port, function() {
-        console.log("le server écoute le port: " + that.opt.port +"("+ player+"/100)")
+        console.log("le server écoute le port: " + that.opt.port +"("+ player+"/"+PlayerMax+")")
 
     });
 };
