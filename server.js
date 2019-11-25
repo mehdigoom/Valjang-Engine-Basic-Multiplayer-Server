@@ -1,5 +1,7 @@
 player = 0
 PlayerMax = 100
+saison = 1
+iforginal = false
 function Server(opt) {
     this.opt = opt;
     this.httpServer = require('http').createServer();
@@ -18,9 +20,12 @@ function rng(max) {
 Server.prototype.start = function() {
 
     console.log("Lancement du serveur mulijoueurs Valjang Engine.")
-    that = this;
-    //Player connecting
-    this.io.on('connection', function(socket) {
+that = this;
+   
+
+
+//Player connecting
+   this.io.on('connection', function(socket) {
         player ++
         console.log("Le client " + socket.id + " est connecter (" + player+PlayerMax+")")
            if(Player >= PlayerMax){
@@ -48,6 +53,35 @@ Server.prototype.start = function() {
         })
 
 
+        socket.on('Getrole', function() {
+//0 = original 
+//1 finder
+//2 killer
+//3 protecteur
+           let id = rng(4)
+       if(id == 0){
+           if(this.iforginal){
+            id = rng(4)
+           }else{
+               this.iforginal = true
+           }
+
+
+       }
+       socket.emit('YourRole',id)
+        })
+
+
+//new saison 
+        socket.on('end', function(id,reason) {
+
+           
+            saison = saison +1
+            socket.broadcast.emit('saison',saison) 
+
+       
+
+        })
 
             //posision player Syc
         socket.on('my_posision', function(posisionx, posisiony, id) {
