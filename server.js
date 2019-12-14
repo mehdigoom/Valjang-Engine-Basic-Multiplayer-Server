@@ -27,7 +27,7 @@ that = this;
 //Player connecting
    this.io.on('connection', function(socket) {
         player ++
-        console.log("Le client " + socket.id + " est connecter (" + player+PlayerMax+")")
+        console.log("Le client " + socket.id + " est connecter (" + player+"/"+PlayerMax+")")
            if(player >= PlayerMax){
             socket.emit('Full',player);
            }
