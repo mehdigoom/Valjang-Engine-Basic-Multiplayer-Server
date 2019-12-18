@@ -1,3 +1,6 @@
+var localStorage = require('localStorage')
+
+
 player = 0
 PlayerMax = 100
 saison = 1
