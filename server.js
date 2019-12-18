@@ -16,6 +16,19 @@ function Rngfloat(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+function load(data) {
+   return(localStorage.getItem(data)) 
+}
+function save(data,contenent) {
+    localStorage.setItem(data, contenent);
+console.log(data +" est bien save")
+}
+function remove(data) {
+
+    localStorage.removeItem(data);
+    console.log(data +" est bien supprimer")
+}
+
 function rng(max) {
 
     return Math.floor(Math.random() * Math.floor(max));
@@ -25,7 +38,7 @@ Server.prototype.start = function() {
     console.log("Lancement du serveur mulijoueurs Valjang Engine.")
 that = this;
    
-
+save("test","test")
 
 //Player connecting
    this.io.on('connection', function(socket) {
@@ -36,7 +49,7 @@ that = this;
            }
 
             //map generator
-        socket.on('needchunk', function(posisionx, posisiony, id) {
+        socket.on('needchunk', function(posisionx, posisiony, zone) {
           
             let idp //Item id
             let posx //Item posison X
