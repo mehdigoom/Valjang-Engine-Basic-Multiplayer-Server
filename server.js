@@ -38,7 +38,7 @@ Server.prototype.start = function() {
     console.log("Lancement du serveur mulijoueurs Valjang Engine.")
 that = this;
    
-save("test","test")
+
 
 //Player connecting
    this.io.on('connection', function(socket) {
