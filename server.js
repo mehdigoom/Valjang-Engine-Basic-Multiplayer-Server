@@ -62,13 +62,12 @@ that = this;
               socket.emit('id',socket.id);
         
         
-            }else{
-                if(load(id)= 0){
+            }
+            if(load(id)= 0){
                 socket.emit('auth',"nope");
                 }else{
                 socket.emit('auth',"ok");
-                }
-            }     
+                }    
         })
 
 
