@@ -4,6 +4,10 @@ var localStorage = require('localStorage')
 player = 0
 PlayerMax = 100
 saison = 1
+if(load("saison") != null){
+    saison = load("saison")
+}
+
 iforginal = false
 function Server(opt) {
     this.opt = opt;
@@ -36,6 +40,7 @@ function rng(max) {
 Server.prototype.start = function() {
 
     console.log("Lancement du serveur mulijoueurs Valjang Engine.")
+ 
 that = this;
    
 
@@ -93,12 +98,22 @@ that = this;
 
            
             saison = saison +1
+            save("saison",saison)
             socket.broadcast.emit('saison',saison) 
 
        
 
         })
 
+
+
+        socket.on('needsaison', function() {
+
+            socket.emit('saison',saison) 
+
+       
+
+        })
             //posision player Syc
         socket.on('my_posision', function(posisionx, posisiony, id) {
 
@@ -129,7 +144,7 @@ that = this;
     //Runnig server
     this.httpServer.listen(this.opt.port, function() {
         console.log("le server écoute le port: " + that.opt.port +"("+ player+"/"+PlayerMax+")")
-
+        console.log("La saison "+saison+" Demarre !")
     });
 };
 module.exports = Server;
