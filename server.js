@@ -53,6 +53,29 @@ that = this;
             socket.emit('Full',player);
            }
 
+
+           //identification
+           socket.on('idplayer', function(id) {
+          
+          if(load(id) = undefined || null) {
+              save(id,1)
+              socket.emit('id',socket.id);
+        
+        
+            }else{
+                if(load(id)= 0){
+                socket.emit('auth',"nope");
+                }else{
+                socket.emit('auth',"ok");
+                }
+            }     
+        })
+
+
+
+
+
+
             //map generator
         socket.on('needchunk', function(posisionx, posisiony, zone) {
           
