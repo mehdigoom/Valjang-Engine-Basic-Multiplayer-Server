@@ -56,7 +56,7 @@ that = this;
 
            //identification
            socket.on('idplayer', function(id) {
-          
+            console.log(socket.id+" à demander à rejoindre la partie")
           if(load(id) = undefined || null) {
               save(id,1)
               socket.emit('id',socket.id);
@@ -68,6 +68,7 @@ that = this;
                 }else{
                 socket.emit('auth',"ok");
                 }    
+                console.log("nouveau joueur :"+ id)
         })
 
 
@@ -97,6 +98,7 @@ that = this;
 
 
         socket.on('Getrole', function() {
+            console.log(socket.id+" à demander un role")
 //0 = original 
 //1 finder
 //2 killer
@@ -130,7 +132,7 @@ that = this;
 
 
         socket.on('needsaison', function() {
-
+            console.log(socket.id+" à demander à savoir la saison actuelle.")
             socket.emit('saison',saison) 
 
        
