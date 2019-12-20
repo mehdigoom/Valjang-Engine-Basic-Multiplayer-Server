@@ -57,17 +57,10 @@ that = this;
            //identification
            socket.on('idplayer', function(id) {
             console.log(socket.id+" à demander à rejoindre la partie")
-          if(load(id) = undefined || null) {
-              save(id,1)
-              socket.emit('id',socket.id);
-        
-        
-            }
-            if(load(id)= 0){
-                socket.emit('auth',"nope");
-                }else{
+            
+              
                 socket.emit('auth',"ok");
-                }    
+              
                 console.log("nouveau joueur :"+ id)
         })
 
