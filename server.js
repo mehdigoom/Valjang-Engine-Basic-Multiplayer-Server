@@ -49,17 +49,19 @@ that = this;
    this.io.on('connection', function(socket) {
         player ++
         console.log("Le client " + socket.id + " est connecter (" + player+"/"+PlayerMax+")")
-           if(player >= PlayerMax){
-            socket.emit('Full',player);
-           }
+          
 
 
            //identification
            socket.on('idplayer', function(id) {
             console.log(socket.id+" à demander à rejoindre la partie")
             
-              
+            if(player >= PlayerMax){
+                socket.emit('auth',"nope");
+               }else{
                 socket.emit('auth',"ok");
+               }
+               
               
                 console.log("nouveau joueur :"+ id)
         })
