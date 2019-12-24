@@ -1,7 +1,17 @@
 var localStorage = require('localStorage')
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
+//Create Token.js and export var token!
+const token = require('./Token');
+client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}!`);
+   // msg.reply('Bonjour à tous !');
+  });
+  client.on('message', msg => {
+    if (msg.content === 'ping') {
+      msg.reply('Pong!');
+    }
+  });
 player = 0
 PlayerMax = 100
 saison = 1
@@ -41,7 +51,7 @@ function rng(max) {
 Server.prototype.start = function() {
 
     console.log("Lancement du serveur mulijoueurs Valjang Engine.")
- 
+    
 that = this;
    
 
@@ -167,6 +177,8 @@ that = this;
         console.log("La saison "+saison+" Demarre !")
     });
     //add your token !
-client.login('token');
+    console.log(token)
+client.login("Discord token :"+token);
+
 };
 module.exports = Server;
