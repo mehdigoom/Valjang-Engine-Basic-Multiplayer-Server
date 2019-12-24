@@ -8,8 +8,8 @@ client.on('ready', () => {
    // msg.reply('Bonjour à tous !');
   });
   client.on('message', msg => {
-    if (msg.content === 'ping') {
-      msg.reply('Pong');
+    if (msg.content === "Qu'elle est la saison actuelle sur Nothing ? ") {
+      msg.reply('La saision actuelle est la saison' + saison);
     }
   });
 player = 0
