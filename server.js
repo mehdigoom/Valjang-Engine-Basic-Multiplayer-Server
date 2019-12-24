@@ -1,5 +1,6 @@
 var localStorage = require('localStorage')
-
+const Discord = require('discord.js');
+const client = new Discord.Client();
 
 player = 0
 PlayerMax = 100
@@ -165,5 +166,7 @@ that = this;
         console.log("le server écoute le port: " + that.opt.port +"("+ player+"/"+PlayerMax+")")
         console.log("La saison "+saison+" Demarre !")
     });
+    //add your token !
+client.login('token');
 };
 module.exports = Server;
