@@ -9,7 +9,7 @@ client.on('ready', () => {
   });
   client.on('message', msg => {
     if (msg.content === 'ping') {
-      msg.reply('Pong!');
+      msg.reply('Pong');
     }
   });
 player = 0
@@ -178,7 +178,7 @@ that = this;
     });
     //add your token !
     console.log(token)
-client.login("Discord token :"+token);
+client.login(token);
 
 };
 module.exports = Server;
