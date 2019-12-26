@@ -10,7 +10,9 @@ const token = require('./Token');
 cache = ""
 lastmsg = ""
 botname = ""
-
+onremove = false
+//Your discord Usern
+Admin ="Miro#8186"
 //all function
 function Rngfloat(min, max) {
     return Math.random() * (max - min) + min;
@@ -50,8 +52,17 @@ client.on('ready', () => {
   
   
   client.on('message', msg => {
-    lastmsg = msg.content
-    if (msg.content === "Qu'elle est la saison actuelle sur Nothing ?") {
+ lastmsg = msg.content
+
+ 
+    
+    
+    
+
+
+
+
+   if (msg.content === "Qu'elle est la saison actuelle sur Nothing ?") {
       msg.reply('La saision actuelle est la saison ' + saison);
     }else if ( msg.content  == "A quand Chaos Maild ?"){
         msg.reply("Je ne donne pas d'info car tu ne m'a pas libéré."); 
@@ -63,7 +74,6 @@ client.on('ready', () => {
         msg.reply("Client:"+ msg.author.tag); 
     }else if (load(msg.content)){
         msg.reply(load(msg.content)); 
-        
     }else if ( msg.content  == "!nope"){
         msg.reply("Ok, j'apprendrais pas de tes messages. Tu peux utiliser !yup pour me laisser de nouvau apprendre de tes mots :)"); 
         save(msg.author.tag,1)
@@ -86,6 +96,8 @@ client.on('ready', () => {
                 cache = msg.content 
             }else if(botname != msg.author.tag){
                     save(cache,msg.content )
+                    cache = ""
+                }else{
                     cache = ""
                 }
                
