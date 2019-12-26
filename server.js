@@ -3,10 +3,13 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 //Create Token.js and export var token!
 const token = require('./Token');
+
+
+
 //all variable for discord
 cache = ""
 lastmsg = ""
-
+botname = ""
 
 //all function
 function Rngfloat(min, max) {
@@ -37,6 +40,7 @@ function rng(max) {
 //discord
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    botname = client.user.tag
    // msg.reply('Bonjour à tous !');
   });
   
@@ -51,7 +55,7 @@ client.on('ready', () => {
       msg.reply('La saision actuelle est la saison ' + saison);
     }else if ( msg.content  == "A quand Chaos Maild ?"){
         msg.reply("Je ne donne pas d'info car tu ne m'a pas libéré."); 
-    }else if ( msg.content  == "Salut"){
+    }else if ( msg.content  == "Salut !"){
         msg.reply("Hey !"); 
     }else if ( msg.content  == "Combien de joueurs connecter sur Nothing ?"){
         msg.reply("Il y à actuellement "+ player +" joueurs en jeu."); 
@@ -74,17 +78,18 @@ client.on('ready', () => {
 
     }else{
 
-if(load(msg.author.tag)){
-    console.log(msg.author.tag+' private user message non sauvgarder')
-}else{
-    
-    if(cache == ""){
-        cache = msg.content 
-    }else{
-        save(cache,msg.content )
-        cache = ""
-    }
-
+        if(load(msg.author.tag)){
+            console.log(msg.author.tag+' private user message non sauvgarder')
+        }else{
+            
+            if(cache == ""){
+                cache = msg.content 
+            }else if(botname != msg.author.tag){
+                    save(cache,msg.content )
+                    cache = ""
+                }
+               
+          
 
 
 
