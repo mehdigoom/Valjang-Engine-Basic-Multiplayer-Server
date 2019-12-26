@@ -63,7 +63,7 @@ client.on('ready', () => {
     }else if ( msg.content  == "!nope"){
         msg.reply("Ok, j'apprendrais pas de tes messages. Tu peux utiliser !yup pour me laisser de nouvau apprendre de tes mots :)"); 
         save(msg.author.tag,1)
-    }else if ( c == "!yup"){        
+    }else if ( msg.content == "!yup"){        
        
         if(load(msg.author.tag)){
             remove(msg.author.tag)
