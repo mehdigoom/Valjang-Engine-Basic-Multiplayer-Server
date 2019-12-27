@@ -1,9 +1,12 @@
-var localStorage = require('localStorage')
+const Configstore = require('configstore');
+const packageJson = require('./package.json');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 //Create Token.js and export var token!
 const token = require('./Token');
-
+const config = new Configstore(packageJson.name, {foo: 'bar'});
+ 
+console.log(config.get('foo'));
 
 
 //all variable for discord
@@ -19,15 +22,15 @@ function Rngfloat(min, max) {
 }
 
 function load(data) {
-   return(localStorage.getItem(data)) 
+   return(config.get(data)) 
 }
 function save(data,contenent) {
-    localStorage.setItem(data, contenent);
+    config.set(data, contenent);
 console.log(data +" est bien save")
 }
 function remove(data) {
 
-    localStorage.removeItem(data);
+    config.delete(data);
     console.log(data +" est bien supprimer")
 }
 
