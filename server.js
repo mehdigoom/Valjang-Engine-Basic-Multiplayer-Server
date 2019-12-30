@@ -55,14 +55,31 @@ client.on('ready', () => {
  lastmsg = msg.content
 
  
+ if (onremove == true) {
+    if(Admin ===msg.author.tag){
+        if(load(msg.content)){
+remove(msg.content)
+msg.reply("Voilà qui est fait !")
+onremove = false
+        }else{
+            msg.reply("Je ne connais pas cette phrase.") 
+            onremove = false
+        }
+    }
     
-    
-    
+}else if (msg.content === "!remove") {
+if(Admin ===msg.author.tag){
+    msg.reply("Biensur qu'es que je dois oublier ?");
+    onremove = true
+}else{
+    msg.reply("Seul mon admin "+Admin+" peut me supprimer des messages.");
+}
 
 
 
 
-   if (msg.content === "Qu'elle est la saison actuelle sur Nothing ?") {
+
+}else if (msg.content === "Qu'elle est la saison actuelle sur Nothing ?") {
       msg.reply('La saision actuelle est la saison ' + saison);
     }else if ( msg.content  == "A quand Chaos Maild ?"){
         msg.reply("Je ne donne pas d'info car tu ne m'a pas libéré."); 
@@ -93,7 +110,10 @@ client.on('ready', () => {
         }else{
             
             if(cache == ""){
-                cache = msg.content 
+                if(botname != msg.author.tag){
+                    cache = msg.content
+                }
+                 
             }else if(botname != msg.author.tag){
                     save(cache,msg.content )
                     cache = ""
