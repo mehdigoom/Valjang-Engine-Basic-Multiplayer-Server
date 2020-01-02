@@ -11,7 +11,7 @@ cache = ""
 lastmsg = ""
 botname = ""
 onremove = false
-//Your discord Usern
+//Your discord Username
 Admin ="Miro#8186"
 //all function
 function Rngfloat(min, max) {
@@ -81,26 +81,35 @@ if(Admin ===msg.author.tag){
 
 }else if (msg.content === "Qu'elle est la saison actuelle sur Nothing ?") {
       msg.reply('La saision actuelle est la saison ' + saison);
+      cache = ""
     }else if ( msg.content  == "A quand Chaos Maild ?"){
         msg.reply("Je ne donne pas d'info car tu ne m'a pas libéré."); 
+        cache = ""
     }else if ( msg.content  == "Salut !"){
         msg.reply("Hey !"); 
+        cache = ""
     }else if ( msg.content  == "Combien de joueurs connecter sur Nothing ?"){
         msg.reply("Il y à actuellement "+ player +" joueurs en jeu."); 
+        cache = ""
     }else if ( msg.content  == "!client"){
-        msg.reply("Client:"+ msg.author.tag); 
+        msg.reply("Client:"+ msg.author.tag);
+        cache = "" 
     }else if (load(msg.content)){
         msg.reply(load(msg.content)); 
+        cache = ""
     }else if ( msg.content  == "!nope"){
         msg.reply("Ok, j'apprendrais pas de tes messages. Tu peux utiliser !yup pour me laisser de nouvau apprendre de tes mots :)"); 
         save(msg.author.tag,1)
+        cache = ""
     }else if ( msg.content == "!yup"){        
        
         if(load(msg.author.tag)){
             remove(msg.author.tag)
             msg.reply("Merci ! j'apprend desormais de tes mots :D")
+            cache = ""
         }else{
             msg.reply("j'apprend deja de tes messages :O")
+            cache = ""
         }
 
     }else{
