@@ -17,6 +17,7 @@ onremove = false
 //Your discord Username
 Admin ="Miro#8186"
 //all function
+
 function Rngfloat(min, max) {
     return Math.random() * (max - min) + min;
 }
