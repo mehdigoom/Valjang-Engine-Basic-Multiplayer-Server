@@ -14,6 +14,7 @@ cache = ""
 lastmsg = ""
 botname = ""
 onremove = false
+mute = true
 //Your discord Username
 Admin ="Miro#8186"
 //all function
@@ -57,92 +58,119 @@ client.on('ready', () => {
   
   client.on('message', msg => {
  lastmsg = msg.content
-
- 
- if (onremove == true) {
-    if(Admin ===msg.author.tag){
-        if(load(msg.content)){
-remove(msg.content)
-msg.reply("Voilà qui est fait !")
-onremove = false
-        }else{
-            msg.reply("Je ne connais pas cette phrase.") 
-            onremove = false
+ if(Admin ===msg.author.tag){
+    if(msg.content === "!mute"){
+        msg.reply("Je passe en mode apprentissage!")
+        mute = false
+    }
+    if(msg.content === "!unmute"){
+        msg.reply("Je sort du mode apprentissage.")
+        mute = true
+    }
+}
+ if(mute){
+    if (onremove == true) {
+        if(Admin ===msg.author.tag){
+            if(load(msg.content)){
+    remove(msg.content)
+    msg.reply("Voilà qui est fait !")
+    onremove = false
+            }else{
+                msg.reply("Je ne connais pas cette phrase.") 
+                onremove = false
+            }
         }
+        
+    }else if (msg.content === "!remove") {
+    if(Admin ===msg.author.tag){
+        msg.reply("Biensur qu'es que je dois oublier ?");
+        onremove = true
+    }else{
+        msg.reply("Seul mon admin "+Admin+" peut me supprimer des messages.");
     }
     
-}else if (msg.content === "!remove") {
-if(Admin ===msg.author.tag){
-    msg.reply("Biensur qu'es que je dois oublier ?");
-    onremove = true
-}else{
-    msg.reply("Seul mon admin "+Admin+" peut me supprimer des messages.");
-}
-
-
-
-
-
-}else if (msg.content === "Qu'elle est la saison actuelle sur Nothing ?") {
-      msg.reply('La saision actuelle est la saison ' + saison);
-      cache = ""
-    }else if ( msg.content  == "A quand Chaos Maild ?"){
-        msg.reply("Je ne donne pas d'info car tu ne m'a pas libéré."); 
-        cache = ""
-    }else if ( msg.content  == "Salut !"){
-        msg.reply("Hey !"); 
-        cache = ""
-    }else if ( msg.content  == "Combien de joueurs connecter sur Nothing ?"){
-        msg.reply("Il y à actuellement "+ player +" joueurs en jeu."); 
-        cache = ""
-    }else if ( msg.content  == "!client"){
-        msg.reply("Client:"+ msg.author.tag);
-        cache = "" 
-    }else if (load(msg.content)){
-        msg.reply(load(msg.content)); 
-        cache = ""
-    }else if ( msg.content  == "!nope"){
-        msg.reply("Ok, j'apprendrais pas de tes messages. Tu peux utiliser !yup pour me laisser de nouvau apprendre de tes mots :)"); 
-        save(msg.author.tag,1)
-        cache = ""
-    }else if ( msg.content == "!yup"){        
-       
-        if(load(msg.author.tag)){
-            remove(msg.author.tag)
-            msg.reply("Merci ! j'apprend desormais de tes mots :D")
+    
+    
+    
+    
+    }else if (msg.content === "Qu'elle est la saison actuelle sur Nothing ?") {
+          msg.reply('La saision actuelle est la saison ' + saison);
+          cache = ""
+        }else if ( msg.content  == "A quand Chaos Maild ?"){
+            msg.reply("Je ne donne pas d'info car tu ne m'a pas libéré."); 
             cache = ""
-        }else{
-            msg.reply("j'apprend deja de tes messages :O")
+        }else if ( msg.content  == "Salut !"){
+            msg.reply("Hey !"); 
             cache = ""
-        }
-
-    }else{
-
-        if(load(msg.author.tag)){
-            console.log(msg.author.tag+' private user message non sauvgarder')
+        }else if ( msg.content  == "Combien de joueurs connecter sur Nothing ?"){
+            msg.reply("Il y à actuellement "+ player +" joueurs en jeu."); 
+            cache = ""
+        }else if ( msg.content  == "!client"){
+            msg.reply("Client:"+ msg.author.tag);
+            cache = "" 
+        }else if (load(msg.content)){
+            msg.reply(load(msg.content)); 
+            cache = ""
+        }else if ( msg.content  == "!nope"){
+            msg.reply("Ok, j'apprendrais pas de tes messages. Tu peux utiliser !yup pour me laisser de nouvau apprendre de tes mots :)"); 
+            save(msg.author.tag,1)
+            cache = ""
+        }else if ( msg.content == "!yup"){        
+           
+            if(load(msg.author.tag)){
+                remove(msg.author.tag)
+                msg.reply("Merci ! j'apprend desormais de tes mots :D")
+                cache = ""
+            }else{
+                msg.reply("j'apprend deja de tes messages :O")
+                cache = ""
+            }
+    
         }else{
-            
-            if(cache == ""){
-                if(botname != msg.author.tag){
-                    cache = msg.content
-                }
-                 
-            }else if(botname != msg.author.tag){
-                    save(cache,msg.content )
-                    cache = ""
-                }else{
-                    cache = ""
-                }
-               
-          
-
-
-
-
-}
-
-
+    
+            if(load(msg.author.tag)){
+                console.log(msg.author.tag+' private user message non sauvgarder')
+            }else{
+                
+                if(cache == ""){
+                    if(botname != msg.author.tag){
+                        cache = msg.content
+                    }
+                     
+                }else if(botname != msg.author.tag){
+                        save(cache,msg.content )
+                        cache = ""
+                    }else{
+                        cache = ""
+                    }
+                   
+              
+    
+    
+    
+    
     }
+    
+    
+        }
+ }else{
+   if(load(msg.content)){
+       console.log("Mode apprentissage activer reponse impossible.")
+       cache = ""
+   }else{
+    if(cache == ""){
+        if(botname != msg.author.tag){
+            cache = msg.content
+        }
+         
+    }else if(botname != msg.author.tag){
+            save(cache,msg.content )
+            cache = ""
+        }else{
+            cache = ""
+        }  
+   }
+ }
     console.log('Discord Message: '+ msg.author.tag +": "+msg.content )
   });
 
