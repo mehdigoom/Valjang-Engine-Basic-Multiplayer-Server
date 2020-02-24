@@ -6,12 +6,13 @@
   "dependencies": {
     "configstore": "^5.0.0",
     "discord.js": "^11.5.1",
+    "parcel-bundler": "^1.12.4",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node start.js"
+    "dev": "parcel start.js",
+    "build": "parcel build start.js"
   },
   "repository": {
     "type": "git",

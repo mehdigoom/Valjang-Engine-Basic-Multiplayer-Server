@@ -1,2 +1,4 @@
 node_modules
 Token.js
+.cache
+dist
