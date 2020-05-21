@@ -15,8 +15,11 @@ lastmsg = ""
 botname = ""
 onremove = false
 mute = true
+Gamelock = false
+setsaison = false
+setban = false
 //Your discord Username
-Admin ="Miro#8186"
+Admin ="Miro【OR40】#8186"
 //all function
 
 function Rngfloat(min, max) {
@@ -46,17 +49,49 @@ function rng(max) {
 
 //discord
 client.on('ready', () => {
+
+    
     console.log(`Logged in as ${client.user.tag}!`);
     botname = client.user.tag
    // msg.reply('Bonjour à tous !');
   });
-  
+
 
   
   
   
   
   client.on('message', msg => {
+    if(Admin ===msg.author.tag){
+        if (msg.content === "!lock") {
+            msg.reply('je deconnecte tout les joueurs' );
+            Gamelock = true
+        }
+        if (msg.content === "!unlock") {
+            msg.reply('le jeu est réouvert' );
+            Gamelock = false
+        }
+        if (msg.content === "!setsaison") {
+            msg.reply("D'accord, qu'elle est le nom de la saison ?" );
+            setsaison = true
+        } else if(setsaison ==true){
+            saison = msg.content
+            setsaison = false
+            msg.reply("Voilà c'est fait." );
+        }
+       
+        if (msg.content === "!ban") {
+            msg.reply("D'accord, qui je dois bannir du jeu ?" );
+            setban = true
+        } else if(setban == true){
+            saison = msg.content
+            setban = false
+            msg.reply("Voilà c'est fait." );
+        }
+
+
+
+    }
  lastmsg = msg.content
  if(Admin ===msg.author.tag){
     if(msg.content === "!mute"){
@@ -90,8 +125,7 @@ client.on('ready', () => {
     }
     
     
-    
-    
+  
     
     }else if (msg.content === "Qu'elle est la saison actuelle sur Nothing ?") {
           msg.reply('La saision actuelle est la saison ' + saison);
