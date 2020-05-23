@@ -18,6 +18,8 @@ mute = true
 Gamelock = false
 setsaison = false
 setban = false
+setmsg = false
+message  =""
 //Your discord Username
 Admin ="Miro【OR40】#8186"
 //all function
@@ -89,7 +91,16 @@ client.on('ready', () => {
             msg.reply("Voilà c'est fait." );
         }
 
-
+        if (msg.content === "!message") {
+            msg.reply("D'accord, qui je dois afficher en du jeu ?" );
+            Gamelock = true
+            setmsg = true
+        } else if(setmsg == true){
+            message= msg.content
+            Gamelock = false
+            setmsg = false
+            msg.reply("Voilà c'est fait." );
+        }
 
     }
  lastmsg = msg.content
