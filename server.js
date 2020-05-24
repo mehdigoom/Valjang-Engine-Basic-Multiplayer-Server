@@ -259,12 +259,16 @@ that = this;
            //identification
            socket.on('idplayer', function(id) {
             console.log(socket.id+" à demander à rejoindre la partie")
-            
+         if(Gamelock == false){
+                
             if(player >= PlayerMax){
                 socket.emit('auth',"nope");
                }else{
                 socket.emit('auth',"ok");
                }
+         }else{
+            socket.emit('auth',message);
+         }
                
               
                 console.log("nouveau joueur :"+ id)
