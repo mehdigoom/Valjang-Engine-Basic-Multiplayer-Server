@@ -348,11 +348,11 @@ that = this;
         })
 
         //Drop item
-        socket.on('spawnI', function(posisionx, posisiony,id) {
+        socket.on('spawnI', function(posisionx, posisiony,role) {
 
            
 
-            socket.broadcast.emit('spawner', posisionx, posisiony, id);
+            socket.broadcast.emit('spawner', posisionx, posisiony, role);
             
 
         })
