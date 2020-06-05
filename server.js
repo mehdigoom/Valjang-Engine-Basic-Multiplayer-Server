@@ -100,9 +100,11 @@ client.on('ready', () => {
         if (msg.content === "!setsaison") {
             msg.reply("D'accord, qu'elle est le nom de la saison ?" );
             setsaison = true
+            
         } else if(setsaison ==true){
             saison = msg.content
             setsaison = false
+            save('saison',saison)
             msg.reply("Voilà c'est fait." );
         }
        
@@ -270,7 +272,14 @@ Server.prototype.start = function() {
     console.log("Lancement du serveur mulijoueurs Valjang Engine.")
     
 that = this;
-   
+if(savedata =! ""){
+    if(savetite=!""){
+        socket.broadcast.emit('save', savetite, savedata);
+        console.log("data envoyer.")
+        savedata = ""
+        savetite = ""
+    }
+}
 
 
 //Player connecting
@@ -279,14 +288,7 @@ that = this;
         console.log("Le client " + socket.id + " est connecter (" + player+"/"+PlayerMax+")")
           
 
-        if(savedata =! ""){
-            if(savetite=!""){
-                socket.broadcast.emit('save', savetite, savedata);
-                console.log("data envoyer.")
-                savedata = ""
-                savetite = ""
-            }
-        }
+      
 
            //identification
            socket.on('idplayer', function(id) {
