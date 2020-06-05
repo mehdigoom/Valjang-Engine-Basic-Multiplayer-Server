@@ -20,6 +20,9 @@ setsaison = false
 setban = false
 setmsg = false
 message  =""
+onsave = false
+savetite = ""
+savedata=""
 //Your discord Username
 Admin ="Miro【OR40】#8186"
 //all function
@@ -65,6 +68,27 @@ client.on('ready', () => {
   
   client.on('message', msg => {
     if(Admin ===msg.author.tag){
+        if (msg.content === "!Gsave") {
+            msg.reply("ok ! Il me faut le titre de l'information ! je met quoi comme titre ?" );
+            onsave=true
+         
+        }else if(onsave==true){
+  
+            if(savetite ==""){
+                
+                savetite= msg.content
+                msg.reply("Voilà titre ajouter ! Il me faut la data de l'information ! je met quoi comme data?" );
+               
+            }else if(savedata ==""){
+                savedata= msg.content
+                msg.reply("titre :" +savetite+" data : " +savedata );
+             
+                onsave=false
+            }
+
+        }
+
+
         if (msg.content === "!lock") {
             msg.reply('je deconnecte tout les joueurs' );
             Gamelock = true
