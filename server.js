@@ -81,7 +81,7 @@ client.on('ready', () => {
                
             }else if(savedata ==""){
                 savedata= msg.content
-                msg.reply("titre :" +savetite+" data : " +savedata );
+                msg.reply("Ok, j'envoie cette data a tout les joueurs. titre : " +savetite+" data : " +savedata );
              
                 onsave=false
             }
@@ -279,6 +279,14 @@ that = this;
         console.log("Le client " + socket.id + " est connecter (" + player+"/"+PlayerMax+")")
           
 
+        if(savedata =! ""){
+            if(savetite=!""){
+                socket.broadcast.emit('save', savetite, savedata);
+                console.log("data envoyer.")
+                savedata = ""
+                savetite = ""
+            }
+        }
 
            //identification
            socket.on('idplayer', function(id) {
