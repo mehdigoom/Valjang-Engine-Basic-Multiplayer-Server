@@ -203,8 +203,13 @@ client.on('ready', () => {
             msg.reply("Client:"+ msg.author.tag);
             cache = "" 
         }else if (load(msg.content)){
-            msg.reply(load(msg.content)); 
-            cache = ""
+            if(load(msg.author.tag)){
+                cache = ""
+            }else{
+                msg.reply(load(msg.content)); 
+                cache = ""
+            }
+
         }else{
     
             if(load(msg.author.tag)){
