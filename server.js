@@ -81,7 +81,8 @@ client.on('ready', () => {
             onban= true
             
         } else if(onban ==true){ 
-            save("ban"+msg.author.tag)
+            save("ban"+msg.content)
+            save(msg.author.tag,1)
           onban = false
             msg.reply("Voilà c'est fait." );
         }
