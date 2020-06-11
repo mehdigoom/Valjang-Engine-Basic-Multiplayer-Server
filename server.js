@@ -23,6 +23,7 @@ message  =""
 onsave = false
 savetite = ""
 savedata=""
+onban=false
 //Your discord Username
 Admin ="Miro【OR40】#8186"
 //all function
@@ -67,7 +68,27 @@ client.on('ready', () => {
   
   
   client.on('message', msg => {
+      if(load("ban"+msg.author.tag)){
+        msg.reply('Je suis pas autorisé à apprendre de toi ou te répondre.')
+        save(msg.author.tag,1)
+
+      }
+      
     if(Admin ===msg.author.tag){
+
+        if (msg.content === "!banuser") {
+            msg.reply("Qui je dois bannir de mon apprentissage ?" );
+            onban= true
+            
+        } else if(onban ==true){
+            save("ban"+msg.author.tag)
+          onban = false
+            msg.reply("Voilà c'est fait." );
+        }
+
+
+
+
         if (msg.content === "!Gsave") {
             msg.reply("ok ! Il me faut le titre de l'information ! je met quoi comme titre ?" );
             onsave=true
