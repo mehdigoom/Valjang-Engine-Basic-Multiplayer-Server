@@ -80,7 +80,7 @@ client.on('ready', () => {
             msg.reply("Qui je dois bannir de mon apprentissage ?" );
             onban= true
             
-        } else if(onban ==true){
+        } else if(onban ==true){ 
             save("ban"+msg.author.tag)
           onban = false
             msg.reply("Voilà c'est fait." );
