@@ -293,18 +293,14 @@ Server.prototype.start = function() {
     console.log("Lancement du serveur mulijoueurs Valjang Engine.")
     
 that = this;
-if(savedata =! ""){
-    if(savetite=!""){
-        socket.broadcast.emit('save', savetite, savedata);
-        console.log("data envoyer.")
-        savedata = ""
-        savetite = ""
-    }
-}
+
 
 
 //Player connecting
    this.io.on('connection', function(socket) {
+
+
+    
         player ++
         console.log("Le client " + socket.id + " est connecter (" + player+"/"+PlayerMax+")")
           
@@ -332,7 +328,14 @@ if(savedata =! ""){
 
 
 
-
+        if(savedata =! ""){
+            if(savetite=!""){
+                socket.broadcast.emit('save', savetite, savedata);
+                console.log("data envoyer.")
+                savedata = ""
+                savetite = ""
+            }
+        }
 
             //map generator
         socket.on('needchunk', function(posisionx, posisiony, zone) {
@@ -347,6 +350,7 @@ if(savedata =! ""){
                 posy = Rngfloat(posisiony - 50, +posisiony + 50)
                 socket.emit('Gen', posx, posy, idp);
                 socket.broadcast.emit('Gen', posx, posy, idp);
+
             }
 
 
