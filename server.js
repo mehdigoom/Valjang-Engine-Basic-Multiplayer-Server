@@ -24,6 +24,7 @@ onsave = false
 savetite = ""
 savedata=""
 onban=false
+unban = false
 
 //Your discord Username
 Admin ="Miro【OR40】#8186"
@@ -88,7 +89,16 @@ client.on('ready', () => {
             msg.reply("Voilà c'est fait." );
         }
 
-
+        if (msg.content === "!unbanuser") {
+            msg.reply("Qui je dois débannir de mon apprentissage ?" );
+            unban= true
+            
+        } else if(unban ==true){ 
+            remove("ban"+msg.content)
+            remove(msg.content)
+          unban = false
+            msg.reply("Voilà c'est fait." );
+        }
 
 
         if (msg.content === "!Gsave") {
