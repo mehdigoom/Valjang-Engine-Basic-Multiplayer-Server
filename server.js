@@ -24,6 +24,7 @@ onsave = false
 savetite = ""
 savedata=""
 onban=false
+
 //Your discord Username
 Admin ="Miro【OR40】#8186"
 //all function
@@ -68,7 +69,7 @@ client.on('ready', () => {
   
   
   client.on('message', msg => {
-      if(load("ban"+msg.author.tag)){
+      if(load(msg.author.tag)){
         msg.reply('Je suis pas autorisé à apprendre de toi ou te répondre.')
         save(msg.author.tag,1)
 
@@ -82,7 +83,7 @@ client.on('ready', () => {
             
         } else if(onban ==true){ 
             save("ban"+msg.content)
-            save(msg.author.tag,1)
+            save(msg.content,1)
           onban = false
             msg.reply("Voilà c'est fait." );
         }
@@ -204,21 +205,6 @@ client.on('ready', () => {
         }else if (load(msg.content)){
             msg.reply(load(msg.content)); 
             cache = ""
-        }else if ( msg.content  == "!nope"){
-            msg.reply("Ok, j'apprendrais pas de tes messages. Tu peux utiliser !yup pour me laisser de nouvau apprendre de tes mots :)"); 
-            save(msg.author.tag,1)
-            cache = ""
-        }else if ( msg.content == "!yup"){        
-           
-            if(load(msg.author.tag)){
-                remove(msg.author.tag)
-                msg.reply("Merci ! j'apprend desormais de tes mots :D")
-                cache = ""
-            }else{
-                msg.reply("j'apprend deja de tes messages :O")
-                cache = ""
-            }
-    
         }else{
     
             if(load(msg.author.tag)){
