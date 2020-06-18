@@ -277,6 +277,10 @@ client.on('ready', () => {
 player = 0
 PlayerMax = 100
 saison = 1
+ocurenceI = 0
+if(load("ocurenceI")){
+    ocurenceI = load("ocurenceI");
+}
 if(load("saison") != null){
     saison = load("saison")
 }
