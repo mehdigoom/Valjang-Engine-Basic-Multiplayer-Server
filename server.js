@@ -52,7 +52,12 @@ function rng(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-
+function newsaison(saison){
+    
+    save('saison',saison)
+    save("ocurenceI",0)
+    console.log("Nothing new saison : "+saison );
+}
 
 
 //discord
@@ -137,7 +142,8 @@ client.on('ready', () => {
         } else if(setsaison ==true){
             saison = msg.content
             setsaison = false
-            save('saison',saison)
+            newsaison(saison)
+
             msg.reply("Voilà c'est fait." );
         }
        
