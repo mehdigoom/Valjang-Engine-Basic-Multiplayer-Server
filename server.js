@@ -379,7 +379,7 @@ that = this;
                 save("I"+ocurenceI,idp)
                 save("Ix"+ocurenceI,posx)
                 save("Iy"+ocurenceI,posy)
-                ocurenceI = ocurenceI++
+                ocurenceI = ocurenceI+1
                 save("ocurenceI",ocurenceI)
             }
 
