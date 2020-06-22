@@ -52,7 +52,7 @@ function rng(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-function newsaison(saison){
+function newsaison(sai){
     var i = 0;
     
 for (; i < ocurenceI; i++) {
@@ -65,10 +65,11 @@ if(load("I"+i)){
 }
 }
 
-    save('saison',saison)
+    save('saison',sai)
     save("ocurenceI",0)
+    saison= sai
 
-    console.log("Nothing new saison : "+saison );
+    console.log("Nothing new saison : "+sai );
 }
 
 
