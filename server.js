@@ -55,15 +55,7 @@ function rng(max) {
 function newsaison(sai){
     var i = 0;
     
-for (; i < ocurenceI; i++) {
-    console.log("tentative de supprimer I"+1)
-if(load("I"+i)){
-    remove("I"+i)
-    remove("I"+i,idp)
-    remove("Ix"+i)
-    remove("Iy"+i)
-}
-}
+
 
     save('saison',sai)
     save("ocurenceI",0)
