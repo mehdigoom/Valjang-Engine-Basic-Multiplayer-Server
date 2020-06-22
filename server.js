@@ -53,9 +53,21 @@ function rng(max) {
 }
 
 function newsaison(saison){
+    var i = 0;
     
+for (; i < ocurenceI; i++) {
+    console.log("tentative de supprimer I"+1)
+if(load("I"+i)){
+    remove("I"+i)
+    remove("I"+i,idp)
+    remove("Ix"+i)
+    remove("Iy"+i)
+}
+}
+
     save('saison',saison)
     save("ocurenceI",0)
+
     console.log("Nothing new saison : "+saison );
 }
 
@@ -290,7 +302,9 @@ if(load("ocurenceI")){
 if(load("saison") != null){
     saison = load("saison")
 }
-
+if(load("ocurenceI")!= null){
+    ocurenceI = load("ocurenceI")
+}
 iforginal = false
 function Server(opt) {
     this.opt = opt;
@@ -362,7 +376,11 @@ that = this;
                 posy = Rngfloat(posisiony - 50, +posisiony + 50)
                 socket.emit('Gen', posx, posy, idp);
                 socket.broadcast.emit('Gen', posx, posy, idp);
-
+                save("I"+ocurenceI,idp)
+                save("Ix"+ocurenceI,posx)
+                save("Iy"+ocurenceI,posy)
+                ocurenceI = ocurenceI++
+                save("ocurenceI",ocurenceI)
             }
 
 
@@ -402,7 +420,24 @@ that = this;
        
 
         })
+//envoie du chargement de la map
+        socket.on('needI', function(i) {
 
+            var I = load("I"+i)
+            var Ix = load("Ix"+i)
+            var Iy = load("Iy"+i)
+
+            socket.emit('loader',I,Ix,Iy) 
+
+       
+
+        })
+
+
+        socket.on('needocurence', function() {
+            socket.emit('ocurence',ocurenceI)
+
+        })
 
 
         socket.on('needsaison', function() {
