@@ -155,7 +155,7 @@ client.on('ready', () => {
         } else if(setsaison ==true){
             saison = msg.content
             setsaison = false
-            newsaison(saison)
+            newsaison(msg.content)
 
             msg.reply("Voilà c'est fait." );
         }
