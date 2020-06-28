@@ -16,7 +16,7 @@ botname = ""
 onremove = false
 mute = true
 Gamelock = false
-setsaison = false
+
 setban = false
 setmsg = false
 message  =""
@@ -101,78 +101,32 @@ client.on('ready', () => {
         }
 
 
-        if (msg.content === "!Gsave") {
-            msg.reply("ok ! Il me faut le titre de l'information ! je met quoi comme titre ?" );
-            onsave=true
-         
-        }else if(onsave==true){
-  
-            if(savetite ==""){
-                
-                savetite= msg.content
-                msg.reply("Voilà titre ajouter ! Il me faut la data de l'information ! je met quoi comme data?" );
-               
-            }else if(savedata ==""){
-                savedata= msg.content
-                msg.reply("Ok, j'envoie cette data a tout les joueurs. titre : " +savetite+" data : " +savedata );
-             
-                onsave=false
-            }
-
+       
+        if(msg.content === "!mute"){
+            msg.reply("Je passe en mode apprentissage!")
+            mute = false
+        }
+        if(msg.content === "!unmute"){
+            msg.reply("Je sort du mode apprentissage.")
+            mute = true
         }
 
-
-        if (msg.content === "!lock") {
-            msg.reply('je deconnecte tout les joueurs' );
-            Gamelock = true
-        }
-        if (msg.content === "!unlock") {
-            msg.reply('le jeu est réouvert' );
-            Gamelock = false
-        }
-        if (msg.content === "!setsaison") {
-            msg.reply("D'accord, qu'elle est le nom de la saison ?" );
-            setsaison = true
-            
-        } else if(setsaison ==true){
-            saison = msg.content
-            setsaison = false
-            save('saison',saison)
-            msg.reply("Voilà c'est fait." );
-        }
+    
+    
        
         if (msg.content === "!ban") {
             msg.reply("D'accord, qui je dois bannir du jeu ?" );
             setban = true
         } else if(setban == true){
-            saison = msg.content
+         
             setban = false
             msg.reply("Voilà c'est fait." );
         }
 
-        if (msg.content === "!message") {
-            msg.reply("D'accord, qui je dois afficher en du jeu ?" );
-            Gamelock = true
-            setmsg = true
-        } else if(setmsg == true){
-            message= msg.content
-            Gamelock = false
-            setmsg = false
-            msg.reply("Voilà c'est fait." );
-        }
 
     }
  lastmsg = msg.content
- if(Admin ===msg.author.tag){
-    if(msg.content === "!mute"){
-        msg.reply("Je passe en mode apprentissage!")
-        mute = false
-    }
-    if(msg.content === "!unmute"){
-        msg.reply("Je sort du mode apprentissage.")
-        mute = true
-    }
-}
+
  if(mute){
     if (onremove == true) {
         if(Admin ===msg.author.tag){
@@ -197,10 +151,7 @@ client.on('ready', () => {
     
   
     
-    }else if (msg.content === "Qu'elle est la saison actuelle sur Nothing ?") {
-          msg.reply('La saision actuelle est la saison ' + saison);
-          cache = ""
-        }else if ( msg.content  == "A quand Chaos Maild ?"){
+    }else if ( msg.content  == "A quand Chaos Maild ?"){
             msg.reply("Je ne donne pas d'info car tu ne m'a pas libéré."); 
             cache = ""
         }else if ( msg.content  == "Salut !"){
@@ -276,10 +227,8 @@ client.on('ready', () => {
 //all variables
 player = 0
 PlayerMax = 100
-saison = 1
-if(load("saison") != null){
-    saison = load("saison")
-}
+
+
 
 iforginal = false
 function Server(opt) {
@@ -309,118 +258,6 @@ that = this;
 
       
 
-           //identification
-           socket.on('idplayer', function(id) {
-            console.log(socket.id+" à demander à rejoindre la partie")
-         if(Gamelock == false){
-                
-            if(player >= PlayerMax){
-                socket.emit('auth',"nope");
-               }else{
-                socket.emit('auth',"ok");
-               }
-         }else{
-            socket.emit('auth',message);
-         }
-               
-              
-                console.log("nouveau joueur :"+ id)
-        })
-
-
-
-
-        if(savedata =! ""){
-            if(savetite=!""){
-                socket.broadcast.emit('save', savetite, savedata);
-                console.log("data envoyer.")
-                savedata = ""
-                savetite = ""
-            }
-        }
-
-            //map generator
-        socket.on('needchunk', function(posisionx, posisiony, zone) {
-          
-            let idp //Item id
-            let posx //Item posison X
-            let posy //Item posison Y
-
-            for (var i = 0; i < 20; i++) {
-                idp = rng(10)
-                posx = Rngfloat(posisionx - 50, posisionx + 50)
-                posy = Rngfloat(posisiony - 50, +posisiony + 50)
-                socket.emit('Gen', posx, posy, idp);
-                socket.broadcast.emit('Gen', posx, posy, idp);
-
-            }
-
-
-
-            
-        })
-
-
-        socket.on('Getrole', function() {
-            console.log(socket.id+" à demander un role")
-//0 = original 
-//1 finder
-//2 killer
-//3 protecteur
-           let id = rng(4)
-       if(id == 0){
-           if(this.iforginal){
-            id = rng(4)
-           }else{
-               this.iforginal = true
-           }
-
-
-       }
-       socket.emit('YourRole',id)
-        })
-
-
-//new saison 
-        socket.on('end', function(id,reason) {
-
-           
-            saison = saison +1
-            save("saison",saison)
-            socket.broadcast.emit('saison',saison) 
-
-       
-
-        })
-
-
-
-        socket.on('needsaison', function() {
-            console.log(socket.id+" à demander à savoir la saison actuelle.")
-            socket.emit('saison',saison) 
-
-       
-
-        })
-            //posision player Syc
-        socket.on('my_posision', function(posisionx, posisiony, id) {
-
-           
-
-            socket.broadcast.emit('player_pos', posisionx, posisiony, id);
-           
-
-        })
-
-        //Drop item
-        socket.on('spawnI', function(posisionx, posisiony,role) {
-
-           
-
-            socket.broadcast.emit('spawner', posisionx, posisiony, role);
-            
-
-        })
             //Player disconnected
         socket.on('disconnect', function() {
             player = player -1
@@ -432,10 +269,10 @@ that = this;
     //Runnig server
     this.httpServer.listen(this.opt.port, function() {
         console.log("le server écoute le port: " + that.opt.port +"("+ player+"/"+PlayerMax+")")
-        console.log("La saison "+saison+" Demarre !")
+       
     });
     //add your token !
-    console.log(token)
+    console.log("Bot disocrd : "+token)
 client.login(token);
 
 
