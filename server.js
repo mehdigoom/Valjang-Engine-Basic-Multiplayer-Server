@@ -52,25 +52,7 @@ function rng(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-function newsaison(sai){
-    var i = 0;
-    
-for (; i < ocurenceI; i++) {
-    console.log("tentative de supprimer I"+1)
-if(load("I"+i)){
-    remove("I"+i)
-    remove("I"+i)
-    remove("Ix"+i)
-    remove("Iy"+i)
-}
-}
 
-    save('saison',sai)
-    save("ocurenceI",0)
-    saison= sai
-
-    console.log("Nothing new saison : "+sai );
-}
 
 
 //discord
@@ -132,14 +114,7 @@ client.on('ready', () => {
     
     
        
-        if (msg.content === "!ban") {
-            msg.reply("D'accord, qui je dois bannir du jeu ?" );
-            setban = true
-        } else if(setban == true){
-         
-            setban = false
-            msg.reply("Voilà c'est fait." );
-        }
+
 
 
     }
