@@ -15,7 +15,7 @@ lastmsg = ""
 botname = ""
 onremove = false
 mute = true
-Gamelock = false
+OcurenceI =0
 
 setban = false
 setmsg = false
@@ -57,6 +57,12 @@ function rng(max) {
 
 //discord
 client.on('ready', () => {
+
+if(load("ocurenceI")){
+    OcurenceI =load("ocurenceI")
+}
+
+
 
     
     console.log(`Logged in as ${client.user.tag}!`);
@@ -250,6 +256,22 @@ that = this;
           
 
       
+    socket.on('PlayerMove', function(x,y,z,rotate) {
+       
+        socket.broadcast.emit('Move', socket.id,x,y,z,rotate);
+    });
+
+    socket.on('CreateItem', function(id,x,y,z,rotate) {
+        save(ocurenceI+1,{id,x,y,z,rotate})
+       ocurenceI = OcurenceI+1
+       save("ocurenceI")
+        socket.broadcast.emit('NewItem', socket.id,id,x,y,z,rotate);
+    });
+
+
+
+
+
 
             //Player disconnected
         socket.on('disconnect', function() {
