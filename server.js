@@ -264,7 +264,7 @@ that = this;
     socket.on('CreateItem', function(id,x,y,z,rotate) {
         save(ocurenceI+1,{id,x,y,z,rotate})
        ocurenceI = OcurenceI+1
-       save("ocurenceI")
+       save("ocurenceI",ocurenceI)
         socket.broadcast.emit('NewItem', socket.id,id,x,y,z,rotate);
     });
 
