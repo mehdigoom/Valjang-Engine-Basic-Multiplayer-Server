@@ -39,8 +39,12 @@ function load(data) {
 }
 
 function save(data, contenent) {
-    config.set(data, contenent);
-    console.log(data + " est bien save")
+    if (onveille == true) {
+        console.log(data + "N'est pas save ! Mode veille activer")
+    } else {
+        config.set(data, contenent);
+        console.log(data + " est bien save")
+    }
 }
 
 function remove(data) {
