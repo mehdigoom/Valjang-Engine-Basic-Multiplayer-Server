@@ -86,12 +86,12 @@ client.on('message', msg => {
 
     if (Admin === msg.author.tag) {
 
-        if (message.content === "!veille") {
+        if (msg.content === "!veille") {
             msg.reply("Je suppose que j'ai pas le choix de passez en veille...");
             onveille = true
         }
 
-        if (message.content === "!unveille") {
+        if (msg.content === "!unveille") {
             msg.reply("Ha, je peut enfin parler !");
             onveille = false
         }
