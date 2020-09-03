@@ -79,6 +79,7 @@ client.on('ready', () => {
 
 
 client.on('message', async message => {
+    channel.createdAt("#général")
     // Voice only works in guilds, if the message does not come from a guild,
     channel.send('Hi ', { tts: true });
   });
