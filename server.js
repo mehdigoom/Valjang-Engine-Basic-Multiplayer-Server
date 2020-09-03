@@ -80,8 +80,22 @@ client.on('ready', () => {
 
 
 
-
 client.on('message', msg => {
+
+
+
+    if (!message.guild) return;
+
+    if (message.content === '/join') {
+      // Only try to join the sender's voice channel if they are in one themselves
+      if (message.member.voice.channel) {
+        const connection = await message.member.voice.channel.join();
+      } else {
+        message.reply("hé ! je peux pas te rejoindre si tu n'est pas dans un salon");
+      }
+    }
+
+
     if (load(msg.author.tag)) {
         msg.reply('Je suis pas autorisé à apprendre de toi ou te répondre.')
         save(msg.author.tag, 1)
@@ -140,6 +154,7 @@ client.on('message', msg => {
 
 
     }
+
     lastmsg = msg.content
 
     if (mute) {
