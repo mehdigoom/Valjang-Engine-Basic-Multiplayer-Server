@@ -78,18 +78,10 @@ client.on('ready', () => {
 
 
 
-client.on('message', async message => {
-    channel.createdAt("#général")
-    // Voice only works in guilds, if the message does not come from a guild,
-    channel.send('Hi ', { tts: true });
-  });
+
+
 
 client.on('message', msg => {
-
-
-
-    
-
     if (load(msg.author.tag)) {
         msg.reply('Je suis pas autorisé à apprendre de toi ou te répondre.')
         save(msg.author.tag, 1)
@@ -148,7 +140,6 @@ client.on('message', msg => {
 
 
     }
-
     lastmsg = msg.content
 
     if (mute) {
