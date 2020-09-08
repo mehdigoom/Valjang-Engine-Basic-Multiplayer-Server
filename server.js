@@ -289,13 +289,16 @@ Server.prototype.start = function() {
             socket.broadcast.emit('Move', socket.id, x, y, z, rotate);
         });
 
-        socket.on('CreateItem', function(id, x, y, z, rotate) {
-            save(ocurenceI + 1, { id, x, y, z, rotate })
-            ocurenceI = OcurenceI + 1
-            save("ocurenceI", ocurenceI)
-            socket.broadcast.emit('NewItem', socket.id, id, x, y, z, rotate);
-        });
 
+        socket.on('Lucy', function(Message) {
+
+            if(load(Message)){
+                socket.emit('mesage',Message);
+            }else{
+                socket.emit('mesage',"Je ne connais pas de reponses :( Tu peux m'apprendre sur discord ! http://discord.valjang.fr");
+            }
+            
+        });
 
 
 
