@@ -17,6 +17,7 @@ console.log(config.get('foo'));
 //all variable for discord
 cache = ""
 lastmsg = ""
+autor = ""
 botname = ""
 onremove = false
 mute = true
@@ -89,7 +90,7 @@ client.on('ready', () => {
 
 
 client.on('message', msg => {
-    socket.broadcast.emit('discord',msg,msg.author.tag);
+
     if (load(msg.author.tag)) {
         msg.reply('Je suis pas autorisé à apprendre de toi ou te répondre.')
         save(msg.author.tag, 1)
@@ -277,7 +278,7 @@ Server.prototype.start = function() {
 
     //Player connecting
     this.io.on('connection', function(socket) {
-
+last 
 
 
         player++
@@ -290,6 +291,11 @@ Server.prototype.start = function() {
             socket.broadcast.emit('Move', socket.id, x, y, z, rotate);
         });
 
+       
+if(last =! lastmsg){
+    socket.broadcast.emit('discord',lastmsg,autor);
+    last = lastmsg
+}
 
         socket.on('Lucy', function(Message) {
 
