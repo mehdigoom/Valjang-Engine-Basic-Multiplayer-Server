@@ -3,7 +3,7 @@ const packageJson = require('./package.json');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 //Create Token.js and export var token!
-v
+
 const token = require('./Token');
 const config = new Configstore(packageJson.name, { foo: 'bar' });
 
