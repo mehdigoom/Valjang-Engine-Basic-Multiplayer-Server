@@ -293,7 +293,7 @@ Server.prototype.start = function() {
         socket.on('Lucy', function(Message) {
 
             if(load(Message)){
-                socket.emit('mesage',Message);
+                socket.emit('mesage',load(Message));
             }else{
                 socket.emit('mesage',"Je ne connais pas de reponses :( Tu peux m'apprendre sur discord ! http://discord.valjang.fr");
             }
