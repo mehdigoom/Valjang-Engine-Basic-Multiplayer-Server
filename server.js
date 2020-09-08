@@ -34,6 +34,8 @@ onveille = false
     //Your discord Username
 Admin = "Miro【OR40】#8186"
     //all function
+    size = config.size()
+    console.log("Je connais : "+ size*2 +" reposes")
 
 function Rngfloat(min, max) {
     return Math.random() * (max - min) + min;
