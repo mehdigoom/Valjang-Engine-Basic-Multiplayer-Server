@@ -3,11 +3,13 @@ const packageJson = require('./package.json');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 //Create Token.js and export var token!
+v
 const token = require('./Token');
 const config = new Configstore(packageJson.name, { foo: 'bar' });
 
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
+const port = 3001
 
 console.log(config.get('foo'));
 
