@@ -278,7 +278,7 @@ Server.prototype.start = function() {
 
     //Player connecting
     this.io.on('connection', function(socket) {
-last 
+let last 
 
 
         player++
