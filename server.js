@@ -6,8 +6,14 @@ const client = new Discord.Client();
 const token = require('./Token');
 const config = new Configstore(packageJson.name, { foo: 'bar' });
 
+var express = require('express');
+var app = express();
+
 console.log(config.get('foo'));
 
+app.get('/', function(req, res) {
+    res.send('Connected');
+  });
 
 //all variable for discord
 cache = ""
