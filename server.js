@@ -4,18 +4,15 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 //Create Token.js and export var token!
 
+
+
 const token = require('./Token');
 const config = new Configstore(packageJson.name, { foo: 'bar' });
 
-const express = require('express')
-const app = express()
-const port = 80
 
 console.log(config.get('foo'));
 
-app.get('/Lucy', function(req, res) {
-    res.send('Connected');
-  });
+
 
 //all variable for discord
 cache = ""
