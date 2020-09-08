@@ -9,11 +9,11 @@ const config = new Configstore(packageJson.name, { foo: 'bar' });
 
 const express = require('express')
 const app = express()
-const port = 3001
+const port = 80
 
 console.log(config.get('foo'));
 
-app.get('/', function(req, res) {
+app.get('/Lucy', function(req, res) {
     res.send('Connected');
   });
 
