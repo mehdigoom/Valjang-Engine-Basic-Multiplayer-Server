@@ -70,7 +70,7 @@ function rng(max) {
 
 //discord
 client.on('ready', () => {
-
+    
     if (load("ocurenceI")) {
         OcurenceI = load("ocurenceI")
     }
@@ -89,6 +89,7 @@ client.on('ready', () => {
 
 
 client.on('message', msg => {
+    socket.broadcast.emit('discord',msg,msg.author.tag);
     if (load(msg.author.tag)) {
         msg.reply('Je suis pas autorisé à apprendre de toi ou te répondre.')
         save(msg.author.tag, 1)
