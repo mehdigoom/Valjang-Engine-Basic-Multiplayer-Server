@@ -298,10 +298,15 @@ if(last =! lastmsg){
 }
 
         socket.on('Lucy', function(Message) {
-
-            if(load(Message)){
+                console.log("Message web : "+message)
+            if(load("html"+Message)){
+                socket.emit('html',load("html"+Message));
+                console.log("Envoie HTML : "+load("html"+Message))
+            }else if(load(Message)){
                 socket.emit('mesage',load(Message));
+                console.log("Envoie Message web : "+load(Message))
             }else{
+                console.log("Envoie HTML : Err ")
                 socket.emit('mesage',"Je ne connais pas de reponses :( Tu peux m'apprendre sur discord ! http://discord.valjang.fr");
             }
             
