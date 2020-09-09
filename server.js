@@ -298,7 +298,7 @@ if(last =! lastmsg){
 }
 
         socket.on('Lucy', function(Message) {
-                console.log("Message web : "+message)
+                console.log("Message web : "+Message)
             if(load("html"+Message)){
                 socket.emit('html',load("html"+Message));
                 console.log("Envoie HTML : "+load("html"+Message))
