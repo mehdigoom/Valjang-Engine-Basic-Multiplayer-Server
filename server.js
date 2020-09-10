@@ -296,7 +296,10 @@ if(last =! lastmsg){
     socket.broadcast.emit('discord',lastmsg,autor);
     last = lastmsg
 }
-
+socket.on('version', function(a) {
+    socket.emit('stable',load(version));
+    socket.emit('indev',load(indev));
+});
         socket.on('Lucy', function(Message) {
                 console.log("Message web : "+Message)
             if(load("html"+Message)){
