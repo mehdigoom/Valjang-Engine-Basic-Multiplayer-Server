@@ -56,10 +56,11 @@ function load(data) {
 function save(data, contenent) {
     if (onveille == true) {
         console.log(data + "N'est pas save ! Mode veille activer")
-        apris = apris +1
+        
 
     } else {
         config.set(data, contenent);
+        apris = apris +1
         console.log(data + " est bien save")
     }
 }
