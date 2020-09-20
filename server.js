@@ -32,6 +32,7 @@ savedata = ""
 onban = false
 unban = false
 onveille = false
+apris = 0
     //Your discord Username
 Admin = "Miro【OR40】#8186"
     //all function
@@ -55,6 +56,8 @@ function load(data) {
 function save(data, contenent) {
     if (onveille == true) {
         console.log(data + "N'est pas save ! Mode veille activer")
+        apris = apris +1
+
     } else {
         config.set(data, contenent);
         console.log(data + " est bien save")
@@ -105,8 +108,13 @@ client.on('message', msg => {
     if (msg.content == "!stat"){
         mysize = Lsize()
         msg.reply("Depuis mon dernier redemarage il y a eu "+visites+" visites sur Valjang.fr")
+        msg.reply("Il y a actuellement " + player + " visiteur(s) sur Valjang.fr")
         msg.reply("Ma base de données contiens "+mysize*8+" Enrengistrements" )
         msg.reply("Je peux repondre a vos messages dans "+ mysize + " contextes differents")
+        msg.reply("Mon administrateur est :" + Admin)
+        msg.reply("Mon cache contien :'"+cache+"'")
+        msg.reply("Dernier message recu est :"+ lastmsg)
+        msg.reply("Depuis mon dernier redemarrage j'ai appris " + apris +" nouvelles choses")
     }
 
     if (Admin === msg.author.tag) {
