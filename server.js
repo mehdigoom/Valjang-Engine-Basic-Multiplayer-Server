@@ -104,9 +104,9 @@ client.on('message', msg => {
     }
     if (msg.content == "!stat"){
         mysize = Lsize()
-        msg.reply("Depuis me dernier redemarage il y a eu "+visites+" visites sur Valjang.fr")
-        msg.reply("Ma base de données contiens"+mysize*8+" Enrengistrements" )
-        msg.reply("Je peux repondre a vos messages dans "+ mysize + "contextes differents")
+        msg.reply("Depuis mon dernier redemarage il y a eu "+visites+" visites sur Valjang.fr")
+        msg.reply("Ma base de données contiens "+mysize*8+" Enrengistrements" )
+        msg.reply("Je peux repondre a vos messages dans "+ mysize + " contextes differents")
     }
 
     if (Admin === msg.author.tag) {
