@@ -22,7 +22,7 @@ botname = ""
 onremove = false
 mute = true
 OcurenceI = 0
-
+visites = 0
 setban = false
 setmsg = false
 message = ""
@@ -35,6 +35,12 @@ onveille = false
     //Your discord Username
 Admin = "Miro【OR40】#8186"
     //all function
+
+
+    function size(){
+        size = config.size
+        return(size)
+    }
     size = config.size
     console.log("Je connais : "+ size*2 +" reposes")
 
@@ -95,6 +101,12 @@ client.on('message', msg => {
         msg.reply('Je suis pas autorisé à apprendre de toi ou te répondre.')
         save(msg.author.tag, 1)
 
+    }
+    if (msg.content == "!stat"){
+        mysize = size()
+        msg.reply("Depuis me dernier redemarage il y a eu "+visites+" visites sur Valjang.fr")
+        msg.reply("Ma base de données contiens"+mysize*8+" Enrengistrements" )
+        msg.reply("Je peux repondre a vos messages dans "+ mysize + "contextes differents")
     }
 
     if (Admin === msg.author.tag) {
@@ -279,7 +291,7 @@ Server.prototype.start = function() {
     //Player connecting
     this.io.on('connection', function(socket) {
 let last 
-
+visites++
 
         player++
         console.log("Le client " + socket.id + " est connecter (" + player + "/" + PlayerMax + ")")
