@@ -37,7 +37,7 @@ Admin = "Miro【OR40】#8186"
     //all function
 
 
-    function size(){
+    function Lsize(){
         size = config.size
         return(size)
     }
@@ -103,7 +103,7 @@ client.on('message', msg => {
 
     }
     if (msg.content == "!stat"){
-        mysize = size()
+        mysize = Lsize()
         msg.reply("Depuis me dernier redemarage il y a eu "+visites+" visites sur Valjang.fr")
         msg.reply("Ma base de données contiens"+mysize*8+" Enrengistrements" )
         msg.reply("Je peux repondre a vos messages dans "+ mysize + "contextes differents")
