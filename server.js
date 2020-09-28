@@ -34,7 +34,7 @@ unban = false
 onveille = false
 apris = 0
     //Your discord Username
-Admin = "Miro【OR40】#8186"
+Admin = "Miro【놈놈니】#8186"
     //all function
 
 
