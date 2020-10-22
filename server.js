@@ -102,7 +102,7 @@ client.on('ready', () => {
 client.on('message', msg => {
 
     if (load(msg.author.tag)) {
-        msg.reply('Je suis pas autorisé à apprendre de toi ou te répondre.')
+
         save(msg.author.tag, 1)
 
     }
