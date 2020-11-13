@@ -100,172 +100,186 @@ client.on('ready', () => {
 
 
 client.on('message', msg => {
+    if (msg.author.tag!= botname) {
 
-    if (load(msg.author.tag)) {
+        if (load(msg.author.tag)) {
 
-        save(msg.author.tag, 1)
-
-    }
-    if (msg.content == "!stat"){
-        mysize = Lsize()
-        msg.reply("Depuis mon dernier redemarage il y a eu "+visites+" visites sur Valjang.fr")
-        msg.reply("Il y a actuellement " + player + " visiteur(s) sur Valjang.fr")
-        msg.reply("Ma base de données contiens "+mysize*8+" Enrengistrements" )
-        msg.reply("Je peux repondre a vos messages dans "+ mysize + " contextes differents")
-        msg.reply("Mon administrateur est :" + Admin)
-        msg.reply("Mon cache contien :'"+cache+"'")
-        msg.reply("Dernier message recu est :"+ lastmsg)
-        msg.reply("Depuis mon dernier redemarrage j'ai appris " + apris +" nouvelles choses")
-    }
-
-    if (Admin === msg.author.tag) {
-
-        if (msg.content === "!veille") {
-            msg.reply("Je suppose que j'ai pas le choix de passez en veille...");
-            onveille = true
+            save(msg.author.tag, 1)
+    
         }
-
-        if (msg.content === "!unveille") {
-            msg.reply("Ha, je peut enfin parler !");
-            onveille = false
+        if (msg.content == "!stat"){
+            mysize = Lsize()
+            msg.reply("Depuis mon dernier redemarage il y a eu "+visites+" visites sur Valjang.fr")
+            msg.reply("Il y a actuellement " + player + " visiteur(s) sur Valjang.fr")
+            msg.reply("Ma base de données contiens "+mysize*8+" Enrengistrements" )
+            msg.reply("Je peux repondre a vos messages dans "+ mysize + " contextes differents")
+            msg.reply("Mon administrateur est :" + Admin)
+            msg.reply("Mon cache contien :'"+cache+"'")
+            msg.reply("Dernier message recu est :"+ lastmsg)
+            msg.reply("Depuis mon dernier redemarrage j'ai appris " + apris +" nouvelles choses")
         }
-
-        if (msg.content === "!banuser") {
-            msg.reply("Qui je dois bannir de mon apprentissage ?");
-            onban = true
-
-        } else if (onban == true) {
-            save("ban" + msg.content)
-            save(msg.content, 1)
-            onban = false
-            msg.reply("Voilà c'est fait.");
+    
+        if (Admin === msg.author.tag) {
+    
+            if (msg.content === "!segondadmin") {
+                msg.reply("Qui je dois definir comme segond admin ?");
+               
+            }
+    
+    
+    
+    
+    
+            if (msg.content === "!veille") {
+                msg.reply("Je suppose que j'ai pas le choix de passez en veille...");
+                onveille = true
+            }
+    
+            if (msg.content === "!unveille") {
+                msg.reply("Ha, je peut enfin parler !");
+                onveille = false
+            }
+    
+            if (msg.content === "!banuser") {
+                msg.reply("Qui je dois bannir de mon apprentissage ?");
+                onban = true
+    
+            } else if (onban == true) {
+                save("ban" + msg.content)
+                save(msg.content, 1)
+                onban = false
+                msg.reply("Voilà c'est fait.");
+            }
+    
+            if (msg.content === "!unbanuser") {
+                msg.reply("Qui je dois débannir de mon apprentissage ?");
+                unban = true
+    
+            } else if (unban == true) {
+                remove("ban" + msg.content)
+                remove(msg.content)
+                unban = false
+                msg.reply("Voilà c'est fait.");
+            }
+    
+    
+    
+            if (msg.content === "!mute") {
+                msg.reply("Je passe en mode apprentissage!")
+                mute = false
+            }
+            if (msg.content === "!unmute") {
+                msg.reply("Je sort du mode apprentissage.")
+                mute = true
+            }
+    
+    
+    
+    
+    
+    
+    
         }
-
-        if (msg.content === "!unbanuser") {
-            msg.reply("Qui je dois débannir de mon apprentissage ?");
-            unban = true
-
-        } else if (unban == true) {
-            remove("ban" + msg.content)
-            remove(msg.content)
-            unban = false
-            msg.reply("Voilà c'est fait.");
-        }
-
-
-
-        if (msg.content === "!mute") {
-            msg.reply("Je passe en mode apprentissage!")
-            mute = false
-        }
-        if (msg.content === "!unmute") {
-            msg.reply("Je sort du mode apprentissage.")
-            mute = true
-        }
-
-
-
-
-
-
-
-    }
-    lastmsg = msg.content
-
-    if (mute) {
-        if (onremove == true) {
-            if (Admin === msg.author.tag) {
+        lastmsg = msg.content
+    
+        if (mute) {
+            if (onremove == true) {
+                if (Admin === msg.author.tag) {
+                    if (load(msg.content)) {
+                        remove(msg.content)
+                        msg.reply("Voilà qui est fait !")
+                        onremove = false
+                    } else {
+                        msg.reply("Je ne connais pas cette phrase.")
+                        onremove = false
+                    }
+                }
+    
+            } else if (msg.content === "!remove") {
+                if (Admin === msg.author.tag) {
+                    msg.reply("Biensur qu'es que je dois oublier ?");
+                    onremove = true
+                } else {
+                    msg.reply("Seul mon admin " + Admin + " peut me supprimer des messages.");
+                }
+    
+    
+    
+    
+            } else if (msg.content == "A quand Chaos Maild ?") {
+                msg.reply("Je ne donne pas d'info car tu ne m'a pas libéré.");
+                cache = ""
+            } else if (msg.content == "Salut !") {
+                msg.reply("Hey !");
+                cache = ""
+            } else if (msg.content == "Combien de joueurs connecter sur Nothing ?") {
+                msg.reply("Il y à actuellement " + player + " joueurs en jeu.");
+                cache = ""
+            } else if (msg.content == "!client") {
+                msg.reply("Client:" + msg.author.tag);
+                cache = ""
+            }
+    
+            if (onveille === false) {
                 if (load(msg.content)) {
-                    remove(msg.content)
-                    msg.reply("Voilà qui est fait !")
-                    onremove = false
+                    if (load(msg.author.tag)) {
+                        cache = ""
+                    } else {
+                        msg.reply(load(msg.content));
+                        cache = ""
+                    }
+    
                 } else {
-                    msg.reply("Je ne connais pas cette phrase.")
-                    onremove = false
+    
+                    if (load(msg.author.tag)) {
+                        console.log(msg.author.tag + ' private user message non sauvgarder')
+                    } else {
+    
+                        if (cache == "") {
+                            if (botname != msg.author.tag) {
+                                cache = msg.content
+                            }
+    
+                        } else if (botname != msg.author.tag) {
+                            save(cache, msg.content)
+                            cache = ""
+                        } else {
+                            cache = ""
+                        }
+    
+    
+    
+    
+    
+    
+                    }
+    
+    
                 }
-            }
-
-        } else if (msg.content === "!remove") {
-            if (Admin === msg.author.tag) {
-                msg.reply("Biensur qu'es que je dois oublier ?");
-                onremove = true
             } else {
-                msg.reply("Seul mon admin " + Admin + " peut me supprimer des messages.");
-            }
-
-
-
-
-        } else if (msg.content == "A quand Chaos Maild ?") {
-            msg.reply("Je ne donne pas d'info car tu ne m'a pas libéré.");
-            cache = ""
-        } else if (msg.content == "Salut !") {
-            msg.reply("Hey !");
-            cache = ""
-        } else if (msg.content == "Combien de joueurs connecter sur Nothing ?") {
-            msg.reply("Il y à actuellement " + player + " joueurs en jeu.");
-            cache = ""
-        } else if (msg.content == "!client") {
-            msg.reply("Client:" + msg.author.tag);
-            cache = ""
-        }
-
-        if (onveille === false) {
-            if (load(msg.content)) {
-                if (load(msg.author.tag)) {
+                if (load(msg.content)) {
+                    console.log("Mode apprentissage activer reponse impossible.")
                     cache = ""
                 } else {
-                    msg.reply(load(msg.content));
-                    cache = ""
-                }
-
-            } else {
-
-                if (load(msg.author.tag)) {
-                    console.log(msg.author.tag + ' private user message non sauvgarder')
-                } else {
-
                     if (cache == "") {
                         if (botname != msg.author.tag) {
                             cache = msg.content
                         }
-
+    
                     } else if (botname != msg.author.tag) {
                         save(cache, msg.content)
                         cache = ""
                     } else {
                         cache = ""
                     }
-
-
-
-
-
-
-                }
-
-
-            }
-        } else {
-            if (load(msg.content)) {
-                console.log("Mode apprentissage activer reponse impossible.")
-                cache = ""
-            } else {
-                if (cache == "") {
-                    if (botname != msg.author.tag) {
-                        cache = msg.content
-                    }
-
-                } else if (botname != msg.author.tag) {
-                    save(cache, msg.content)
-                    cache = ""
-                } else {
-                    cache = ""
                 }
             }
         }
+        console.log('Discord Message: ' + msg.author.tag + ": " + msg.content)
+
+
     }
-    console.log('Discord Message: ' + msg.author.tag + ": " + msg.content)
+
 });
 
 
