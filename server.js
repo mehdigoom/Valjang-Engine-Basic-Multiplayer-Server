@@ -33,9 +33,22 @@ onban = false
 unban = false
 onveille = false
 apris = 0
+adminMinecraft = ""
     //Your discord Username
 Admin = "Miro【놈놈니】#8186"
     //all function
+
+if(load("adminMinecraft")){
+    adminMinecraft = load("adminMinecraft")
+
+
+
+
+}else{
+    adminMinecraft = Admin
+}
+
+
 
 
     function Lsize(){
@@ -100,7 +113,10 @@ client.on('ready', () => {
 
 
 client.on('message', msg => {
+
     if (msg.author.tag!= botname) {
+
+
 
         if (load(msg.author.tag)) {
 
@@ -117,6 +133,7 @@ client.on('message', msg => {
             msg.reply("Mon cache contien :'"+cache+"'")
             msg.reply("Dernier message recu est :"+ lastmsg)
             msg.reply("Depuis mon dernier redemarrage j'ai appris " + apris +" nouvelles choses")
+            msg.reply("l'admin Minecraft est : "+adminMinecraft)
         }
     
         if (Admin === msg.author.tag) {
