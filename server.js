@@ -113,7 +113,7 @@ client.on('ready', () => {
 
 
 client.on('message', msg => {
-
+if(msg.autor.tag =! botname){
     if (msg.author.tag!= botname) {
 
 
@@ -143,7 +143,10 @@ client.on('message', msg => {
                
             }
     
-    
+            if (msg.content === "!adminminecraftcraft") {
+                msg.reply("Qui je dois definir comme admin Minecraft ?");
+               
+            }
     
     
     
@@ -296,6 +299,8 @@ client.on('message', msg => {
 
 
     }
+}
+   
 
 });
 
