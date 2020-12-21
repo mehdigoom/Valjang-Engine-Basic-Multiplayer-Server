@@ -105,7 +105,7 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     botname = client.user.tag
         // msg.reply('Bonjour à tous !');
-});
+
 
 
 
@@ -302,6 +302,7 @@ if(msg.author.tag =! botname){
 }
    
 
+});
 });
 
 
