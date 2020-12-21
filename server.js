@@ -113,9 +113,9 @@ client.on('ready', () => {
 
 
 client.on('message', msg => {
-    console.log(msg.author.tag)
-if(msg.author.tag =! botname){
-  
+if(msg.author.tag == botname){}
+else{
+
 
 
 
