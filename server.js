@@ -114,7 +114,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
 if(msg.autor.tag =! botname){
-    if (msg.author.tag!= botname) {
+  
 
 
 
@@ -298,7 +298,7 @@ if(msg.autor.tag =! botname){
         console.log('Discord Message: ' + msg.author.tag + ": " + msg.content)
 
 
-    }
+    
 }
    
 
