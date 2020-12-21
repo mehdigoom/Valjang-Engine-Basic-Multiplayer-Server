@@ -113,7 +113,7 @@ client.on('ready', () => {
 
 
 client.on('message', msg => {
-if(msg.autor.tag =! botname){
+if(msg.author.tag =! botname){
   
 
 
