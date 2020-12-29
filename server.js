@@ -33,20 +33,11 @@ onban = false
 unban = false
 onveille = false
 apris = 0
-adminMinecraft = ""
+
     //Your discord Username
 Admin = "Miro【놈놈니】#8186"
     //all function
 
-if(load("adminMinecraft")){
-    adminMinecraft = load("adminMinecraft")
-
-
-
-
-}else{
-    adminMinecraft = Admin
-}
 
 
 
@@ -134,20 +125,11 @@ else{
             msg.reply("Mon cache contien :'"+cache+"'")
             msg.reply("Dernier message recu est :"+ lastmsg)
             msg.reply("Depuis mon dernier redemarrage j'ai appris " + apris +" nouvelles choses")
-            msg.reply("l'admin Minecraft est : "+adminMinecraft)
+           
         }
     
         if (Admin === msg.author.tag) {
     
-            if (msg.content === "!segondadmin") {
-                msg.reply("Qui je dois definir comme segond admin ?");
-               
-            }
-    
-            if (msg.content === "!adminminecraftcraft") {
-                msg.reply("Qui je dois definir comme admin Minecraft ?");
-               
-            }
     
     
     
@@ -246,8 +228,41 @@ else{
                     if (load(msg.author.tag)) {
                         cache = ""
                     } else {
-                        msg.reply(load(msg.content));
+
+//ajout contexte ici
+
+                     //ancienne type de repose  // msg.reply(load(msg.content));
+
+//verifier si load est utilisez dans un contexte
+// si oui verifier le contexte [Si Lucy à un contexte elle repond sinon elle pose la question]
+
+//[Question 1 ] Demande le contexte
+
+
+//[Fontionnement du contexte] 
+
+
+// [Contexte contien 2] 
+// ocurnce (nombre de contexte est utiliser load)
+// ID du contexte + load
+
+
+
+
+
+//  [Reconnecence de contexe 3 ]
+
+// Analyse des 4 dernier messages 
+
+// Deduire un contexte
+
+//repondre en fonction de celuis si. 
+
+//si reponse disponible repondre //si phrase mais pas de contexte poser question (1)
+
                         cache = ""
+                    
+                    
                     }
     
                 } else {
