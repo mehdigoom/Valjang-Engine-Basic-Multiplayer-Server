@@ -33,12 +33,50 @@ onban = false
 unban = false
 onveille = false
 apris = 0
+contexte ="" 
+message1= ""
+message2= ""
+message3= ""
+message4= ""
+
+contexte1=""
+contexte2=""
+contexte3=""
+contexte4=""
+currentmessag = 1
 
     //Your discord Username
 Admin = "Miro【놈놈니】#8186"
     //all function
 
+function SetContexte(contexte){
 
+
+
+}
+
+function GetContete(){
+if(load(message1+message2)){
+
+
+
+}
+
+if(load(message2+message3)){
+
+
+
+}
+if(load(message4+message1)){
+
+
+
+}
+
+
+
+
+}
 
 
 
@@ -209,16 +247,8 @@ else{
     
     
     
-            } else if (msg.content == "A quand Chaos Maild ?") {
-                msg.reply("Je ne donne pas d'info car tu ne m'a pas libéré.");
-                cache = ""
-            } else if (msg.content == "Salut !") {
-                msg.reply("Hey !");
-                cache = ""
-            } else if (msg.content == "Combien de joueurs connecter sur Nothing ?") {
-                msg.reply("Il y à actuellement " + player + " joueurs en jeu.");
-                cache = ""
-            } else if (msg.content == "!client") {
+            }  
+            if (msg.content == "!client") {
                 msg.reply("Client:" + msg.author.tag);
                 cache = ""
             }
