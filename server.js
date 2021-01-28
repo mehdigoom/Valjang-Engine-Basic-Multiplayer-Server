@@ -261,7 +261,7 @@ else{
 
 //ajout contexte ici
 
-                     //ancienne type de repose  // msg.reply(load(msg.content));
+       msg.reply(load(msg.content)); // A REMPLACER
 
 //verifier si load est utilisez dans un contexte
 // si oui verifier le contexte [Si Lucy à un contexte elle repond sinon elle pose la question]
