@@ -257,13 +257,13 @@ else{
 
             if (msg.content == "!dac") {
                 msg.reply("Merci ! je te poserais des question ! Promis je ne spam pas !");
-                save(msg.autor+"Auth",1)
+                save( msg.author.tag+"Auth",1)
                 cache = ""
             }
 
             if (msg.content == "!non") {
                 msg.reply("D'accord :( Tu peux toujours faire !dac si tu change d'avis.");
-                save(msg.autor+"Auth",2)
+                save( msg.author.tag+"Auth",2)
                 cache = ""
             }
             if (onveille === false) {
@@ -273,18 +273,18 @@ else{
                     } else {
 
 //ajout contexte ici
-if(load(msg.autor+"Auth")){
-    if(load(msg.autor+"Auth") == 0){
+if(load( msg.author.tag+"Auth")){
+    if(load( msg.author.tag+"Auth") == 0){
         msg.reply("Oublie pas de repondre par !non ou !dac. C'est important pour moi !")
         msg.reply(load(msg.content)); // A REMPLACER
-    }else if(load(msg.autor+"Auth")== 1) {
+    }else if(load( msg.author.tag+"Auth")== 1) {
         msg.reply(load(msg.content)); 
     }else{
         msg.reply(load(msg.content)); 
     }
    
 }else{
-    save(msg.autor+"Auth",0)
+    save( msg.author.tag+"Auth",0)
     msg.reply("Salut ! m'autorise tu à te poser des qustions pour m'aider a comuniquer avec vous ?");
     msg.reply('Ecrit : "!dac" Si tu tu es daccord ');
     msg.reply('Ecrit : "!non" Si tu tu es pas daccord ');
